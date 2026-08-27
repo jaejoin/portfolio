@@ -136,6 +136,8 @@ b,strong{font-weight:600;color:var(--ink)}
   letter-spacing:-.03em;display:block;margin-bottom:.15rem;font-variant-numeric:tabular-nums}
 .ps-r .pn{color:var(--ink);font-weight:600}
 @media (max-width:760px){
+  /* 좁은 화면에서는 문장 단위 줄바꿈을 끈다 — 자연 줄바꿈이 낫다 */
+  .sub br,.plede br{display:none}
   .ps-h{display:none}
   .ps-r{grid-template-columns:1fr;gap:0}
   .ps-r > div{padding:.75rem 1rem}
@@ -527,7 +529,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
   <div class="slide-head">
     <span class="crumb">Problem &rarr; Solution</span>
     <h2>무엇을 발견하고, 어떻게 바꿨나</h2>
-    <p class="sub">맡은 일에서 반복되거나 어긋나는 지점을 찾아 구조를 바꾼 사례입니다. 아래 프로젝트는 이 여섯 줄을 자세히 푼 것입니다.</p>
+    <p class="sub">맡은 일에서 반복되거나 어긋나는 지점을 찾아 구조를 바꾼 사례입니다.<br>아래 프로젝트는 이 여섯 줄을 자세히 푼 것입니다.</p>
   </div>
   <div class="ps">
     <div class="ps-h"><div>발견한 문제</div><div>바꾼 방식</div><div>결과</div></div>
@@ -642,7 +644,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
   <div class="slide-head">
     <span class="crumb">Who uses it</span>
     <h2>제 일부터 줄이려고 만들었는데,<br>세 파트가 쓰게 됐습니다</h2>
-    <p class="sub">처음에는 제 반복 업무를 없애려고 시작했습니다. 만들어 놓으니 영업과 CS에서도 같은 요청이 들어왔고, 그쪽 화면과 리포트까지 맡게 됐습니다.</p>
+    <p class="sub">처음에는 제 반복 업무를 없애려고 시작했습니다.<br>만들어 놓으니 영업과 CS에서도 같은 요청이 들어왔고, 그쪽 화면과 리포트까지 맡게 됐습니다.</p>
   </div>
 
   <div class="runs">
@@ -671,7 +673,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
       <span class="call-a">한 번에 보내는 건수, 분당 호출 한도, 응답 목표 시간, 타임아웃, <b>실패했을 때의 동작</b>까지 규격으로 먼저 합의했습니다. 상대 쪽이 늦거나 실패해도 우리 처리는 멈추지 않고 넘어가게 뒀고, 전환 전에 기준값을 뽑아 전환 직후 줄어든 항목이 없는지 대조했습니다.</span></div>
   </div>
 </section>
-<section class="chapter deck"><div class="chapter-in"><span class="chapter-n">Chapter 1</span><h2 class="chapter-t">매일 사람 손 없이 도는 것들</h2><p class="chapter-d">가격을 보고 지원금을 조정하는 엔진, 시장 데이터를 모으는 인프라, Slack 조회 창구, 리포트 파이프라인. 네 시스템 모두 상용에서 가동 중입니다.</p></div></section><section class="slide deck" id="p-xat"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 01</span><h2 class="ptitle">쿠폰 지원금 자동조정 엔진</h2><p class="plede">경쟁 채널보다 낮은 결제가를 유지하려고 본사가 부담하는 쿠폰 지원금을, 가격 변화에 맞춰 매시간 자동으로 조정하는 엔진입니다. 예산이 직접 나가는 판단이라 안전장치 설계에 시간을 가장 많이 썼습니다.</p><div class="pmeta"><span>2026.06 – 08</span><span>설계 · 구현 · 운영 단독</span><span>상용 가동</span></div><ul><li>경쟁 채널 가격을 매시간 확인해 제휴점별 지원금 자동 조정</li><li>지원 조건을 코드가 아니라 데이터로 분리 — 대상 그룹이 늘어도 배포 없이 화면에서 처리</li><li>예산 상한, 매핑 검수, 자동 0원 처리 등 안전장치 6단계 설계</li><li>마케팅팀이 직접 조작하는 운영 콘솔(웹) 설계·구현</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">32 → 3</span><span class="win-k">흩어져 있던 정책 그룹을 통합. 71곳 × 12항목을 전부 대조해 실제 적용값이 하나도 바뀌지 않은 것을 확인</span></div><div class="win"><span class="win-v">65만원</span><span class="win-k">검증 없이 나가던 새벽 구간 지출을 자정 일괄 처리로 월간 절감</span></div><div class="win"><span class="win-v">227건</span><span class="win-k">회귀 테스트. 매일 아침 자동으로 돌고 실패할 때만 알림이 옵니다</span></div><div class="win"><span class="win-v">57 → 4.6초</span><span class="win-k">운영 현황 로딩. 타겟 쿠폰 발행은 352초 → 2.8초</span></div></div></div></section>
+<section class="chapter deck"><div class="chapter-in"><span class="chapter-n">Chapter 1</span><h2 class="chapter-t">매일 사람 손 없이 도는 것들</h2><p class="chapter-d">가격을 보고 지원금을 조정하는 엔진, 시장 데이터를 모으는 인프라, Slack 조회 창구, 리포트 파이프라인. 네 시스템 모두 상용에서 가동 중입니다.</p></div></section><section class="slide deck" id="p-xat"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 01</span><h2 class="ptitle">쿠폰 지원금 자동조정 엔진</h2><p class="plede">경쟁 채널보다 낮은 결제가를 유지하려고 본사가 부담하는 쿠폰 지원금을, 가격 변화에 맞춰 매시간 자동으로 조정하는 엔진입니다.<br>예산이 직접 나가는 판단이라 안전장치 설계에 시간을 가장 많이 썼습니다.</p><div class="pmeta"><span>2026.06 – 08</span><span>설계 · 구현 · 운영 단독</span><span>상용 가동</span></div><ul><li>경쟁 채널 가격을 매시간 확인해 제휴점별 지원금 자동 조정</li><li>지원 조건을 코드가 아니라 데이터로 분리 — 대상 그룹이 늘어도 배포 없이 화면에서 처리</li><li>예산 상한, 매핑 검수, 자동 0원 처리 등 안전장치 6단계 설계</li><li>마케팅팀이 직접 조작하는 운영 콘솔(웹) 설계·구현</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">32 → 3</span><span class="win-k">흩어져 있던 정책 그룹을 통합. 71곳 × 12항목을 전부 대조해 실제 적용값이 하나도 바뀌지 않은 것을 확인</span></div><div class="win"><span class="win-v">65만원</span><span class="win-k">검증 없이 나가던 새벽 구간 지출을 자정 일괄 처리로 월간 절감</span></div><div class="win"><span class="win-v">227건</span><span class="win-k">회귀 테스트. 매일 아침 자동으로 돌고 실패할 때만 알림이 옵니다</span></div><div class="win"><span class="win-v">57 → 4.6초</span><span class="win-k">운영 현황 로딩. 타겟 쿠폰 발행은 352초 → 2.8초</span></div></div></div></section>
 <section class="slide deck">
   <div class="slide-head"><span class="crumb">지원금 엔진 &nbsp;/&nbsp; <b>구조</b></span>
     <h2>지원금이 나가기 전에 여섯 번 걸러집니다</h2></div>
@@ -754,7 +756,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
 <section class="slide deck">
   <div class="slide-head"><span class="crumb">지원금 엔진 &nbsp;/&nbsp; <b>운영 화면</b></span>
     <h2>정책을 바꾸는 일이 배포가 아니라 화면 조작이 되도록</h2>
-    <p class="sub">마케팅 담당자가 정책 그룹·명단·상한·예산·쿠폰 발행까지 직접 다루는 사내 웹입니다. 실제 화면의 탭·폼·표 구성을 그대로 옮겼고 모든 값과 이름은 예시입니다. <b>탭을 눌러 보세요 — 14개 화면이 실제로 전환됩니다.</b></p></div>
+    <p class="sub">마케팅 담당자가 정책 그룹·명단·상한·예산·쿠폰 발행까지 직접 다루는 사내 웹입니다.<br>실제 화면의 탭·폼·표 구성을 그대로 옮겼고 모든 값과 이름은 예시입니다.<br><b>탭을 눌러 보세요 — 14개 화면이 실제로 전환됩니다.</b></p></div>
   <figure>
     <div class="mock-frame" id="mk">
       <div class="mk-gnav"><span class="mk-logo">꿀스테이</span><span class="mk-t">마케팅 콘솔</span><span class="mk-me">기준 00:00 · 관리자</span></div>
@@ -1144,7 +1146,6 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
 
       </div>
     </div>
-    <figcaption>실제 콘솔의 그룹 3개 · 탭 14개를 그대로 옮긴 목업입니다. 명단 붙여넣기, 쿠폰 발행 자료 생성, 정책 그룹별 상한, 조정 이력의 판정 사유까지 — 담당자가 배포 없이 화면에서 끝내는 범위가 이만큼입니다.</figcaption>
   </figure>
 <figure style="margin-top:2.6rem">
   <div class="slack">
@@ -1190,7 +1191,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
     <span class="call-a">담당자가 이미 시트에 익숙해서 화면도 같은 방식으로 다루게 만들었습니다. 헤더를 눌러 거르고, 여러 범위를 골라 복사하면 시트에 그대로 붙습니다. 그리드 라이브러리 없이 직접 구현했고, 사내망이 http라 클립보드 기능을 쓸 수 없어 대체 경로를 뒀습니다.</span></div>
 </div>
 </section>
-<section class="slide deck" id="p-price"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 02</span><h2 class="ptitle">객실 매칭 · 시장 가격 비교</h2><p class="plede">채널마다 객실 이름과 할인 표시가 달라, 같은 방인지 판정하는 것부터가 문제였습니다. 공개된 판매 정보를 같은 기준으로 정규화해 3사 가격을 비교할 수 있게 만들었고, 지원금 엔진·영업 알림·가격 비교 화면·외부 연동 도구가 모두 이 결과를 씁니다.</p><div class="pmeta"><span>2026.06 – 08</span><span>인프라 · 매칭 알고리즘 · 연동</span><span>상용 가동</span></div><ul><li>GCP에 수집 서버를 따로 세워 외부 요청 경로를 한 곳으로 통일. 헤드리스 브라우저 없이 서버 렌더링 응답을 직접 해석해 건당 5~8초</li><li>고정 IP · 방화벽 화이트리스트 · 자동 기동 구성, Cloud SQL을 가격 창고로 운영</li><li>채널마다 다른 객실명을 짝짓는 매칭 엔진 설계와 검증 체계 구축</li><li>소비처 4곳이 같은 수집 결과를 쓰도록 진입점을 하나로 정리</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">74.3%</span><span class="win-k">객실 매칭 정답률 (55.8%에서 개선). 서버 377곳 · 226건 채점</span></div><div class="win"><span class="win-v">오답 0건</span><span class="win-k">정답률보다 먼저 지킨 기준. 지원금이 나가는 판단이라 오답을 허용하지 않았습니다</span></div><div class="win"><span class="win-v">91.6%</span><span class="win-k">실제 운영 중인 매칭률 (1,208쌍 기준)</span></div><div class="win"><span class="win-v">소비처 4곳</span><span class="win-k">같은 수집 결과를 함께 씁니다. 도구마다 따로 받아오던 중복 요청을 없앴습니다</span></div></div></div>
+<section class="slide deck" id="p-price"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 02</span><h2 class="ptitle">객실 매칭 · 시장 가격 비교</h2><p class="plede">채널마다 객실 이름과 할인 표시가 달라, 같은 방인지 판정하는 것부터가 문제였습니다.<br>공개된 판매 정보를 같은 기준으로 정규화해 3사 가격을 비교할 수 있게 만들었고, 지원금 엔진·영업 알림·가격 비교 화면·외부 연동 도구가 모두 이 결과를 씁니다.</p><div class="pmeta"><span>2026.06 – 08</span><span>인프라 · 매칭 알고리즘 · 연동</span><span>상용 가동</span></div><ul><li>GCP에 수집 서버를 따로 세워 외부 요청 경로를 한 곳으로 통일. 헤드리스 브라우저 없이 서버 렌더링 응답을 직접 해석해 건당 5~8초</li><li>고정 IP · 방화벽 화이트리스트 · 자동 기동 구성, Cloud SQL을 가격 창고로 운영</li><li>채널마다 다른 객실명을 짝짓는 매칭 엔진 설계와 검증 체계 구축</li><li>소비처 4곳이 같은 수집 결과를 쓰도록 진입점을 하나로 정리</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">74.3%</span><span class="win-k">객실 매칭 정답률 (55.8%에서 개선). 서버 377곳 · 226건 채점</span></div><div class="win"><span class="win-v">오답 0건</span><span class="win-k">정답률보다 먼저 지킨 기준. 지원금이 나가는 판단이라 오답을 허용하지 않았습니다</span></div><div class="win"><span class="win-v">91.6%</span><span class="win-k">실제 운영 중인 매칭률 (1,208쌍 기준)</span></div><div class="win"><span class="win-v">소비처 4곳</span><span class="win-k">같은 수집 결과를 함께 씁니다. 도구마다 따로 받아오던 중복 요청을 없앴습니다</span></div></div></div>
 <figure style="margin-top:2.6rem">
   <div class="figbox">
     <svg class="dgm" viewBox="0 0 1000 250" role="img" aria-label="수집 인프라 구조도. 사내 서버 네 곳의 소비처가 GCP 수집 서버에 요청을 위임하고, GCP 서버만 외부 채널의 공개 페이지를 조회한다. 수집 결과는 Cloud SQL 창고에 쌓이며 사내 서버는 그 창고도 같은 경로로 조회한다. 수집 요청은 이 서버에서만 나가도록 코드에서 고정되어 있다.">
@@ -1235,7 +1236,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
 <section class="slide deck">
   <div class="slide-head"><span class="crumb">객실 매칭 &nbsp;/&nbsp; <b>검증 설계</b></span>
     <h2>규칙을 감으로 고르지 않으려고<br>채점 체계를 먼저 만들었습니다</h2>
-    <p class="sub">영업 담당자가 수작업으로 확정해 둔 매핑을 정답지로 삼았습니다. 그 답을 엔진에는 알려주지 않고 자동 매칭만 돌린 뒤 사람의 답과 대조하는 방식입니다. 수집은 한 번만 하고 저장해 두어, 규칙 실험은 오프라인에서 반복했습니다.</p></div>
+    <p class="sub">영업 담당자가 수작업으로 확정해 둔 매핑을 정답지로 삼았습니다.<br>그 답을 엔진에는 알려주지 않고 자동 매칭만 돌린 뒤 사람의 답과 대조하는 방식입니다.<br>수집은 한 번만 하고 저장해 두어, 규칙 실험은 오프라인에서 반복했습니다.</p></div>
   <figure>
     <div class="figbox">
       <svg class="dgm" viewBox="0 0 1000 300" role="img" aria-label="객실 매칭 규칙 실험 결과. 기준 정답률 55.8퍼센트에서 규칙 네 가지를 채택해 74.3퍼센트가 되었고 오답은 0건을 유지했다. 정답률을 더 올리는 규칙 두 가지는 오답이 생겨 채택하지 않았다.">
@@ -1342,11 +1343,11 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
   <figcaption class="shotcap">영업 담당자가 제휴점에서 점주와 함께 여는 화면입니다. 채널마다 할인 표시가 달라 <b>판매가 · 쿠폰 · 실결제가 세 층으로 나눠</b> 보여줍니다. 얼마에 팔고 쿠폰을 얼마 붙였는지가 보여야 다음 판매가를 정할 수 있습니다.</figcaption>
 </figure>
 </section>
-<section class="slide deck" id="p-agent"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 03</span><h2 class="ptitle">Slack 데이터 에이전트</h2><p class="plede">각 부서의 데이터 요청이 한쪽으로 몰리던 상황을 줄이려고 만들었습니다. Slack에서 물으면 검증된 함수가 바로 답하고, 담당자가 매번 SQL을 새로 짜서 엑셀로 넘기는 일이 줄었습니다.</p><div class="pmeta"><span>2026.04 – 08</span><span>아키텍처 · 권한 · 안전망</span><span>상용 가동</span></div><ul><li>자주 나오는 질문을 검증된 함수로 등록해 Slack에서 바로 조회</li><li>권한 2등급, 개인정보 마스킹, 모든 질의 감사 로그</li><li>인계받은 자연어 SQL 변환 기능의 운영 도입을 판단해 끄기로 결정하고, 검증된 함수 경로로 대체</li><li>운영 DB 장애를 겪은 뒤 조회 경로에 6단계 안전장치 설계</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">174개</span><span class="win-k">테이블 스키마를 문서로 정리. enum 139종 · 코드값 622개 사전 포함</span></div><div class="win"><span class="win-v">39 → 13</span><span class="win-k">쌓여 있던 함수를 정리. 많이 등록하는 대신 검증된 것만 남겼습니다</span></div><div class="win"><span class="win-v">차이 0</span><span class="win-k">매출 4종을 옛 경로와 새 경로로 동시에 돌려 값이 같은지 확인 (4개 기간)</span></div><div class="win"><span class="win-v">111건</span><span class="win-k">파이프라인 시나리오 55 + Slack 시나리오 56 검증</span></div><div class="win"><span class="win-v">수천만 행</span><span class="win-k">가장 큰 이력 테이블 기준. 실행계획으로 3행만 읽고 0.05초에 끝나도록 인덱스 경로를 설계</span></div></div></div></section>
+<section class="slide deck" id="p-agent"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 03</span><h2 class="ptitle">Slack 데이터 에이전트</h2><p class="plede">각 부서의 데이터 요청이 한쪽으로 몰리던 상황을 줄이려고 만들었습니다.<br>Slack에서 물으면 검증된 함수가 바로 답하고, 담당자가 매번 SQL을 새로 짜서 엑셀로 넘기는 일이 줄었습니다.</p><div class="pmeta"><span>2026.04 – 08</span><span>아키텍처 · 권한 · 안전망</span><span>상용 가동</span></div><ul><li>자주 나오는 질문을 검증된 함수로 등록해 Slack에서 바로 조회</li><li>권한 2등급, 개인정보 마스킹, 모든 질의 감사 로그</li><li>인계받은 자연어 SQL 변환 기능의 운영 도입을 판단해 끄기로 결정하고, 검증된 함수 경로로 대체</li><li>운영 DB 장애를 겪은 뒤 조회 경로에 6단계 안전장치 설계</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">174개</span><span class="win-k">테이블 스키마를 문서로 정리. enum 139종 · 코드값 622개 사전 포함</span></div><div class="win"><span class="win-v">39 → 13</span><span class="win-k">쌓여 있던 함수를 정리. 많이 등록하는 대신 검증된 것만 남겼습니다</span></div><div class="win"><span class="win-v">차이 0</span><span class="win-k">매출 4종을 옛 경로와 새 경로로 동시에 돌려 값이 같은지 확인 (4개 기간)</span></div><div class="win"><span class="win-v">111건</span><span class="win-k">파이프라인 시나리오 55 + Slack 시나리오 56 검증</span></div><div class="win"><span class="win-v">수천만 행</span><span class="win-k">가장 큰 이력 테이블 기준. 실행계획으로 3행만 읽고 0.05초에 끝나도록 인덱스 경로를 설계</span></div></div></div></section>
 <section class="slide deck">
   <div class="slide-head"><span class="crumb">데이터 에이전트 &nbsp;/&nbsp; <b>질의 처리</b></span>
     <h2>반복되는 질문은 검증된 함수가 답합니다</h2>
-    <p class="sub">인계받은 골격에 자연어를 SQL로 바꾸는 기능이 들어 있었지만, 상용에서는 비활성으로 두고 검증된 함수로만 답하게 했습니다. 반복해서 나오는 지표 질문에 매번 새 쿼리를 만들면 같은 질문에 다른 값이 나올 수 있고, 검증하지 않은 쿼리가 운영 DB로 나가기 때문입니다.</p></div>
+    <p class="sub">인계받은 골격에 자연어를 SQL로 바꾸는 기능이 들어 있었지만, 상용에서는 비활성으로 두고 검증된 함수로만 답하게 했습니다.<br>반복해서 나오는 지표 질문에 매번 새 쿼리를 만들면 같은 질문에 다른 값이 나올 수 있고, 검증하지 않은 쿼리가 운영 DB로 나가기 때문입니다.</p></div>
   <figure>
     <div class="figbox">
       <svg class="dgm" viewBox="0 0 1000 250" role="img" aria-label="질의 처리 경로. Slack 질문이 권한 확인과 캐시를 지나 검증된 함수 매칭으로 답하고, 조회와 마스킹을 거쳐 응답과 감사 로그로 끝난다. 자연어를 SQL로 바꾸는 경로는 구현되어 있지만 운영에서는 비활성이다.">
@@ -1451,11 +1452,11 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
     <figcaption>타임아웃이 나면 재시도하지 않습니다. 타임아웃은 DB가 이미 부하를 받고 있다는 신호라, 다시 걸면 상황을 키웁니다.</figcaption>
   </figure>
 </section>
-<section class="slide deck" id="p-pipe"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 04</span><h2 class="ptitle">일일 · 월말 리포트 파이프라인</h2><p class="plede">마케팅과 영업이 매일 아침 손으로 옮겨 적던 시트 갱신을 서버 예약 실행으로 바꿨습니다. 네 번의 구조 변경을 거치며 어느 작업이 어떤 데이터를 책임지는지 매번 다시 정리했습니다.</p><div class="pmeta"><span>2026.04 – 08</span><span>지표 정의 · 배치 · 예측 모델</span><span>상용 가동</span></div><ul><li>구글 시트 9종과 Slack 리포트 7종을 시간 · 일 · 월 단위로 나눠 자동 갱신</li><li>월 경계 작업을 독립 실행으로 분리해 매달 1일에만 나던 오류 제거</li><li>한 시트가 실패해도 나머지는 완료되도록 실패 격리 3계층 구성</li><li>월말 예측 모델을 백테스트로 교체</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">40% · 30%</span><span class="win-k">마케팅 40% 이상, 영업 30%. 구축 후 해당 업무를 직접 하던 실무자에게 확인한 반복 업무 감소폭</span></div><div class="win"><span class="win-v">10 → 3.5분</span><span class="win-k">파이프라인 실행 시간. 한 영역은 12분에서 2.2초로 단축</span></div><div class="win"><span class="win-v">4.7%</span><span class="win-k">매출 예측 오차(MAE). 기존 방식 11.7% 대비 2.5배 정확</span></div><div class="win"><span class="win-v">PC 무관</span><span class="win-k">로컬 실행에서 서버 예약 실행으로. 담당자가 PC를 켜둘 필요가 없어졌습니다</span></div></div></div></section>
+<section class="slide deck" id="p-pipe"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 04</span><h2 class="ptitle">일일 · 월말 리포트 파이프라인</h2><p class="plede">마케팅과 영업이 매일 아침 손으로 옮겨 적던 시트 갱신을 서버 예약 실행으로 바꿨습니다.<br>네 번의 구조 변경을 거치며 어느 작업이 어떤 데이터를 책임지는지 매번 다시 정리했습니다.</p><div class="pmeta"><span>2026.04 – 08</span><span>지표 정의 · 배치 · 예측 모델</span><span>상용 가동</span></div><ul><li>구글 시트 9종과 Slack 리포트 7종을 시간 · 일 · 월 단위로 나눠 자동 갱신</li><li>월 경계 작업을 독립 실행으로 분리해 매달 1일에만 나던 오류 제거</li><li>한 시트가 실패해도 나머지는 완료되도록 실패 격리 3계층 구성</li><li>월말 예측 모델을 백테스트로 교체</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">40% · 30%</span><span class="win-k">마케팅 40% 이상, 영업 30%. 구축 후 해당 업무를 직접 하던 실무자에게 확인한 반복 업무 감소폭</span></div><div class="win"><span class="win-v">10 → 3.5분</span><span class="win-k">파이프라인 실행 시간. 한 영역은 12분에서 2.2초로 단축</span></div><div class="win"><span class="win-v">4.7%</span><span class="win-k">매출 예측 오차(MAE). 기존 방식 11.7% 대비 2.5배 정확</span></div><div class="win"><span class="win-v">PC 무관</span><span class="win-k">로컬 실행에서 서버 예약 실행으로. 담당자가 PC를 켜둘 필요가 없어졌습니다</span></div></div></div></section>
 <section class="slide deck">
   <div class="slide-head"><span class="crumb">파이프라인 &nbsp;/&nbsp; <b>예측 모델</b></span>
     <h2>모델이 아니라 평균의 분모가 문제였습니다</h2>
-    <p class="sub">예산 시트는 월말 예상치를 함께 보여줍니다. 그런데 월초에 보는 값이 월말 실적과 크게 어긋났습니다. 담당자가 준 기준은 하나였습니다. 며칠에 봐도 월말 결과와 비슷할 것.</p></div>
+    <p class="sub">예산 시트는 월말 예상치를 함께 보여줍니다.<br>그런데 월초에 보는 값이 월말 실적과 크게 어긋났습니다.<br>담당자가 준 기준은 하나였습니다.<br>며칠에 봐도 월말 결과와 비슷할 것.</p></div>
   <figure>
     <div class="figbox">
       <svg class="dgm" viewBox="0 0 1000 250" role="img" aria-label="월초 시점 예측 오차 개선. 모든 지표에 같은 진행률 곡선을 쓰던 방식은 15.15퍼센트였고, 지표별 모델로 나누고 요일 평균의 분모를 달력 날수로 바꾸자 2.70퍼센트가 되었다.">
@@ -1511,11 +1512,11 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
   <figcaption class="shotcap">담당자가 매일 아침 보는 시트입니다. 노란 칸이 월말 예측값이고, 항목마다 다른 모델이 붙어 있습니다. 예전에는 이 표를 사람이 채웠습니다.</figcaption>
 </figure>
 </section>
-<section class="chapter deck"><div class="chapter-in"><span class="chapter-n">Chapter 2</span><h2 class="chapter-t">그 시스템을 만들게 된 배경</h2><p class="chapter-d">자동화 이전에 직접 굴리던 마케팅 실무와, 지표가 움직인 원인을 밝히던 분석입니다. 도메인을 먼저 안 상태에서 자동화로 넘어간 것이 설계의 근거가 됐습니다.</p></div></section><section class="slide deck" id="p-mkt"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 05</span><h2 class="ptitle">마케팅 실무 · 기획전 운영</h2><p class="plede">자동화 이전에 직접 굴리던 실무입니다. 쿠폰 캠페인 기획·발행과 매달 도는 기획전 회차 운영을 맡았고, 여기서 겪은 반복이 이후 자동화의 설계도가 됐습니다.</p><div class="pmeta"><span>2025.09 – 현재</span><span>기획 · 집행 · 분석</span><span>실무</span></div><ul><li>쿠폰 캠페인 기획과 발행 — 대상 추출부터 성과 분석까지</li><li>기획전 회차 운영 — 목표 설정, 쿠폰 발행·세팅, 키비주얼 제공, 미달 리커버리, 예산 마감</li><li>이용자 세그먼트 8종 정의, 웰컴 쿠폰팩 설계, 재구매 코호트 분석</li><li>마케팅 · 영업 · 운영 · 개발 네 부서를 오가며 회차 기준과 절차를 조율</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">103건</span><span class="win-k">7개월간 담당한 캠페인. 쿠폰 발행 세트 65건</span></div><div class="win"><span class="win-v">71건</span><span class="win-k">기획전 한 회차 업무를 전수 분해. 자동 14 · 반자동 38 · 수동 19로 정리</span></div><div class="win"><span class="win-v">749원</span><span class="win-k">휴면 고객 캠페인의 예약 1건당 단가. 손익분기 3,000원의 4분의 1</span></div><div class="win"><span class="win-v">51만 행</span><span class="win-k">캠페인 한 건에 다루던 분석 시트 최대 행수. 손작업을 스크립트로 옮긴 근거</span></div></div></div></section>
+<section class="chapter deck"><div class="chapter-in"><span class="chapter-n">Chapter 2</span><h2 class="chapter-t">그 시스템을 만들게 된 배경</h2><p class="chapter-d">자동화 이전에 직접 굴리던 마케팅 실무와, 지표가 움직인 원인을 밝히던 분석입니다. 도메인을 먼저 안 상태에서 자동화로 넘어간 것이 설계의 근거가 됐습니다.</p></div></section><section class="slide deck" id="p-mkt"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 05</span><h2 class="ptitle">마케팅 실무 · 기획전 운영</h2><p class="plede">자동화 이전에 직접 굴리던 실무입니다.<br>쿠폰 캠페인 기획·발행과 매달 도는 기획전 회차 운영을 맡았고, 여기서 겪은 반복이 이후 자동화의 설계도가 됐습니다.</p><div class="pmeta"><span>2025.09 – 현재</span><span>기획 · 집행 · 분석</span><span>실무</span></div><ul><li>쿠폰 캠페인 기획과 발행 — 대상 추출부터 성과 분석까지</li><li>기획전 회차 운영 — 목표 설정, 쿠폰 발행·세팅, 키비주얼 제공, 미달 리커버리, 예산 마감</li><li>이용자 세그먼트 8종 정의, 웰컴 쿠폰팩 설계, 재구매 코호트 분석</li><li>마케팅 · 영업 · 운영 · 개발 네 부서를 오가며 회차 기준과 절차를 조율</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">103건</span><span class="win-k">7개월간 담당한 캠페인. 쿠폰 발행 세트 65건</span></div><div class="win"><span class="win-v">71건</span><span class="win-k">기획전 한 회차 업무를 전수 분해. 자동 14 · 반자동 38 · 수동 19로 정리</span></div><div class="win"><span class="win-v">749원</span><span class="win-k">휴면 고객 캠페인의 예약 1건당 단가. 손익분기 3,000원의 4분의 1</span></div><div class="win"><span class="win-v">51만 행</span><span class="win-k">캠페인 한 건에 다루던 분석 시트 최대 행수. 손작업을 스크립트로 옮긴 근거</span></div></div></div></section>
 <section class="slide deck">
   <div class="slide-head"><span class="crumb">마케팅 실무 &nbsp;/&nbsp; <b>발견</b></span>
     <h2>단가를 내리지 않아도 조건 하나로 같은 손실이 났습니다</h2>
-    <p class="sub">신규 가입자에게 주는 첫 예약 쿠폰의 조건을 바꿔가며 전환율을 추적했습니다. 예산을 줄이려면 금액을 낮추는 게 먼저라고 생각했는데 실측은 다르게 나왔습니다.</p></div>
+    <p class="sub">신규 가입자에게 주는 첫 예약 쿠폰의 조건을 바꿔가며 전환율을 추적했습니다.<br>예산을 줄이려면 금액을 낮추는 게 먼저라고 생각했는데 실측은 다르게 나왔습니다.</p></div>
   <figure>
     <div class="figbox">
       <svg class="dgm" viewBox="0 0 1000 270" role="img" aria-label="첫 예약 쿠폰 조건별 전환율 비교. 기준을 100으로 두면 숙박 전용으로 제한했을 때 74, 금액을 3천원으로 내렸을 때 70으로 떨어졌다.">
@@ -1552,7 +1553,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
 <section class="slide deck">
   <div class="slide-head"><span class="crumb">마케팅 실무 &nbsp;/&nbsp; <b>기획전 업무 분해</b></span>
     <h2>자동화하기 전에 한 회차에 무슨 일이 있는지부터 셌습니다</h2>
-    <p class="sub">무엇을 자동화할지 정하려면 지금 무슨 일을 하고 있는지부터 알아야 했습니다. 한 회차에 필요한 업무를 71건으로 전부 적어놓고 자동 · 반자동 · 수동으로 나눴습니다.</p></div>
+    <p class="sub">무엇을 자동화할지 정하려면 지금 무슨 일을 하고 있는지부터 알아야 했습니다.<br>한 회차에 필요한 업무를 71건으로 전부 적어놓고 자동 · 반자동 · 수동으로 나눴습니다.</p></div>
   <figure>
     <div class="figbox">
       <svg class="dgm" viewBox="0 0 1000 250" role="img" aria-label="기획전 한 회차 업무 71건의 자동화 정도. 완전 자동 14건, 화면 조작으로 끝나는 반자동 38건, 사람 손이 필요한 수동 19건으로 나뉜다.">
@@ -1588,11 +1589,11 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
       <span class="call-a">회차 중간에 그만두는 제휴점이 생기면 지원금을 즉시 끊고 남은 금액을 확정해야 합니다. 예전에는 담당자가 계산해 전달했는데, 해지 처리와 환불액 확정, 잔액을 다음 회차로 이월할지 상품권으로 줄지까지 화면에서 정리하게 했습니다.</span></div>
   </div>
 </section>
-<section class="slide deck" id="p-causal"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 06</span><h2 class="ptitle">데이터 분석 · 원인 규명</h2><p class="plede">지표가 움직였을 때 무엇 때문인지 밝히는 일을 맡았습니다. 눈에 보이는 상관관계를 그대로 원인으로 쓰지 않고, 다른 설명이 가능한지 하나씩 확인해 제외하는 방식으로 접근했습니다.</p><div class="pmeta"><span>2026.05 – 08</span><span>설계 · 분석 · 보고</span><span>의사결정 반영</span></div><ul><li>광고 집행이 멈췄다 재개된 구간을 자연실험으로 활용해 원인 분리</li><li>이중차분(DiD)과 요일 보정 기준선으로 캠페인 · 홍보물 효과 측정</li><li>대체 설명을 수치로 하나씩 확인해 제외</li><li>비교군의 자연 발생분을 차감하고 순증분만 성과로 인정</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">-69% vs -23~28%</span><span class="win-k">유입 경로별로 나눠 신규가입 하락의 진짜 원인을 규명. 사내 통념과 다른 결론</span></div><div class="win"><span class="win-v">99.4%</span><span class="win-k">예약 증가분 중 지원금 수혜 제휴점 비중. 대체 가설 세 가지를 수치로 제외</span></div><div class="win"><span class="win-v">전수 분석</span><span class="win-k">표본을 뽑지 않고 대상자 전원을 추적. 비교군 차감 후 순증분만 성과로 계산</span></div><div class="win"><span class="win-v">A/B 권고</span><span class="win-k">관점에 따라 결론이 갈리면 한쪽을 고르지 않고 양쪽 값을 함께 제시</span></div></div></div></section>
+<section class="slide deck" id="p-causal"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 06</span><h2 class="ptitle">데이터 분석 · 원인 규명</h2><p class="plede">지표가 움직였을 때 무엇 때문인지 밝히는 일을 맡았습니다.<br>눈에 보이는 상관관계를 그대로 원인으로 쓰지 않고, 다른 설명이 가능한지 하나씩 확인해 제외하는 방식으로 접근했습니다.</p><div class="pmeta"><span>2026.05 – 08</span><span>설계 · 분석 · 보고</span><span>의사결정 반영</span></div><ul><li>광고 집행이 멈췄다 재개된 구간을 자연실험으로 활용해 원인 분리</li><li>이중차분(DiD)과 요일 보정 기준선으로 캠페인 · 홍보물 효과 측정</li><li>대체 설명을 수치로 하나씩 확인해 제외</li><li>비교군의 자연 발생분을 차감하고 순증분만 성과로 인정</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">-69% vs -23~28%</span><span class="win-k">유입 경로별로 나눠 신규가입 하락의 진짜 원인을 규명. 사내 통념과 다른 결론</span></div><div class="win"><span class="win-v">99.4%</span><span class="win-k">예약 증가분 중 지원금 수혜 제휴점 비중. 대체 가설 세 가지를 수치로 제외</span></div><div class="win"><span class="win-v">전수 분석</span><span class="win-k">표본을 뽑지 않고 대상자 전원을 추적. 비교군 차감 후 순증분만 성과로 계산</span></div><div class="win"><span class="win-v">A/B 권고</span><span class="win-k">관점에 따라 결론이 갈리면 한쪽을 고르지 않고 양쪽 값을 함께 제시</span></div></div></div></section>
 <section class="slide deck">
   <div class="slide-head"><span class="crumb">데이터 분석 &nbsp;/&nbsp; <b>원인 규명</b></span>
     <h2>신규가입이 떨어진 진짜 원인을 찾았습니다</h2>
-    <p class="sub">특정 월 신규가입이 눈에 띄게 빠졌고 사내에서는 쿠폰 축소를 원인으로 보고 있었습니다. 마침 인스타그램 광고가 한 달간 꺼졌다 다시 켜진 구간이 있어서, 유입 경로별로 나눠 비교했습니다.</p></div>
+    <p class="sub">특정 월 신규가입이 눈에 띄게 빠졌고 사내에서는 쿠폰 축소를 원인으로 보고 있었습니다.<br>마침 인스타그램 광고가 한 달간 꺼졌다 다시 켜진 구간이 있어서, 유입 경로별로 나눠 비교했습니다.</p></div>
   <figure>
     <div class="figbox">
       <svg class="dgm" viewBox="0 0 1000 268" role="img" aria-label="인스타그램 광고 중단 구간의 유입 경로별 신규가입 추이. 광고가 꺼진 기간에 인스타 경로는 69퍼센트 줄었고 다른 경로는 23에서 28퍼센트 감소에 그쳤다. 광고 재개 직후 인스타 경로만 즉시 회복했다.">
@@ -1630,7 +1631,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
   <div class="slide-head">
     <span class="crumb">Incident log</span>
     <h2>운영하면서 잡은 것들</h2>
-    <p class="sub">자동화는 잘 돌 때보다 틀렸을 때 무엇을 했는지가 남습니다. 실제 운영 중 발견한 문제와 그때 바꾼 구조를 적었습니다.</p>
+    <p class="sub">자동화는 잘 돌 때보다 틀렸을 때 무엇을 했는지가 남습니다.<br>실제 운영 중 발견한 문제와 그때 바꾼 구조를 적었습니다.</p>
   </div>
   <div class="incs">
     <div class="inc">
@@ -1666,7 +1667,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
 <section class="slide deck" id="how">
   <div class="slide-head"><span class="crumb">How I work</span>
     <h2>혼자 만들고 운영하면서 정착시킨 것</h2>
-    <p class="sub">코드를 리뷰해 줄 사람도, 장애를 나눠 맡을 사람도 없는 조건이었습니다. 숙련도에 기대는 대신 틀리면 드러나는 구조를 만드는 데 시간을 썼습니다.</p></div>
+    <p class="sub">코드를 리뷰해 줄 사람도, 장애를 나눠 맡을 사람도 없는 조건이었습니다.<br>숙련도에 기대는 대신 틀리면 드러나는 구조를 만드는 데 시간을 썼습니다.</p></div>
   <div class="ways">
     <div><p class="way-t"><span>01</span>원인 확정 후 수정</p>
       <p class="way-d">가능성을 몇 개 떠올리고 그중 하나로 고치는 방식을 버렸습니다. 로그를 보고 시각을 대조하고 값을 역산한 뒤에 손댑니다. 위 사고들의 원인을 초 단위 시각 일치나 날짜별 최고값 역산으로 특정한 것이 그 결과입니다.</p></div>
