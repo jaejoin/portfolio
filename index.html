@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>쿠폰에서 시스템까지</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
@@ -90,10 +91,11 @@ b,strong{font-weight:600;color:var(--ink)}
   margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--line);
   font-family:var(--mono);font-size:.79rem;color:var(--ink-3)}
 .namecard b{color:var(--ink);font-weight:600;font-size:.92rem;letter-spacing:.02em}
-.themebtn{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--ink-3);
-  background:none;border:1px solid var(--line);border-radius:99px;padding:.3rem .75rem;
-  cursor:pointer;white-space:nowrap}
-.themebtn:hover{color:var(--ink);border-color:var(--ink-3)}
+/* 토글이 배경에 묻힌다는 피드백(2026-08-27) — 채운 알약으로 반전 */
+.themebtn{font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.08em;
+  color:var(--bg);background:var(--ink);border:1px solid var(--ink);border-radius:99px;
+  padding:.34rem .8rem;cursor:pointer;white-space:nowrap}
+.themebtn:hover{background:var(--ink-2);border-color:var(--ink-2)}
 
 /* ══ 챕터 구분 ══ */
 .chapter{padding-block:clamp(2.4rem,4.5vw,3.6rem);border-top:1px solid var(--line)}
@@ -280,7 +282,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
 .mk-tab button.on{color:var(--hy-ink);border-bottom-color:var(--hy-honey);font-weight:700}
 .mk-grp button:focus-visible,.mk-tab button:focus-visible{outline:2px solid var(--hy-honey2);outline-offset:-2px;border-radius:3px}
 .mk-card{background:var(--hy-surface);border:1px solid var(--hy-line);border-radius:5px;
-  padding:9px 11px;margin-bottom:8px}
+  padding:9px 11px;margin-bottom:8px;overflow-x:auto}
 .mk-kpi{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:flex-end}
 .mk-kpi .k{display:block;font-size:9px;font-weight:600;color:var(--hy-ink3);letter-spacing:.3px}
 .mk-kpi .v{display:block;font-family:var(--mono);font-size:15px;font-weight:600;
@@ -320,6 +322,31 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
 .st.warn2{background:#f6efdf;color:#c1913f}
 .st.mid{background:#eeece7;color:#6f6b63}
 .st.good{background:#eef3ef;color:#4e7f65}
+/* ── 콘솔 목업 확장 (탭 14개 재현, 2026-08-27) ── */
+.mk-sum{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+.mk-sum .sb{display:inline-flex;align-items:baseline;gap:5px;font-size:10.5px;color:var(--hy-ink2)}
+.mk-sum .sb i{font-style:normal;font-size:9px;color:var(--hy-ink3)}
+.mk-sum .sb b{font-family:var(--mono);font-size:12.5px;color:var(--hy-ink);letter-spacing:-.3px}
+.mk-sum .sb b.good{color:#4e7f65}
+.mk-sum .sb em{font-style:normal;font-size:8.5px;color:var(--hy-ink3)}
+.mk-chips{display:inline-flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.mk-side{display:grid;grid-template-columns:9.5rem 1fr;gap:8px;align-items:start}
+.mk-rsi{background:var(--hy-surface);border:1px solid var(--hy-line);border-radius:5px;
+  padding:6px 9px;margin-bottom:5px;font-size:10.5px;font-weight:600;color:var(--hy-ink2);
+  display:flex;align-items:center;justify-content:space-between;gap:6px;cursor:default}
+.mk-rsi.on{border-color:var(--hy-honey);color:var(--hy-ink);
+  box-shadow:inset 3px 0 0 var(--hy-honey)}
+.mk-ta{width:100%;box-sizing:border-box;background:var(--hy-surface);border:1px solid var(--hy-line);
+  border-radius:4px;padding:6px 8px;font:10px/1.6 var(--mono);color:var(--hy-ink2);resize:none}
+.mk-in{background:var(--hy-surface);border:1px solid var(--hy-line);border-radius:4px;
+  padding:3px 8px;font-size:10px;color:var(--hy-ink3)}
+.mk-files{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.mk-file{background:var(--hy-surface);border:1px dashed var(--hy-line);border-radius:4px;
+  padding:3px 8px;font-size:9.5px;color:var(--hy-ink2)}
+.mk-tbl th.off,.mk-tbl td.off{color:var(--hy-ink3);opacity:.55}
+.mk-tbl td.crit{color:#bd6a58;font-weight:700}
+.mk-sub{display:block;font-size:8px;color:var(--hy-ink3);font-family:var(--sans)}
+@media (max-width:760px){.mk-side{grid-template-columns:1fr}}
 
 /* ══ 실제 화면 목업 3종 — 구조는 실제, 값은 예시 ══ */
 /* 슬랙 알림 */
@@ -419,7 +446,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
   @page{margin:13mm}
 }
 </style>
-<nav class="nav"><div class="deck nav-in"><span class="me">이재준</span><a href="#sum">요약</a><a href="#ps">문제와 해결</a><a href="#run">가동 현황</a><a href="#dept">누가 쓰나</a><a href="#p-xat">01 지원금 엔진</a><a href="#p-price">02 객실 매칭</a><a href="#p-agent">03 데이터 에이전트</a><a href="#p-pipe">04 파이프라인</a><a href="#p-mkt">05 마케팅 실무</a><a href="#p-causal">06 원인 규명</a><a href="#inc">사고 기록</a><span class="sp"></span><button class="themebtn" id="tt" type="button">◐ 다크</button></div></nav><header class="deck cover"><div class="cover-top"><span class="crumb">Portfolio 2026</span></div><p class="pos-sub">Marketing Domain · Data · Automation</p><div class="pos"><span>비즈니스 분석</span><i>×</i><span>업무 자동화</span></div><h1>한땀한땀 채우던 엑셀부터<br><em>마케팅·영업·CS 업무 자동화</em>까지</h1>
+<nav class="nav"><div class="deck nav-in"><span class="me">이재준</span><a href="#sum">요약</a><a href="#ps">문제와 해결</a><a href="#run">가동 현황</a><a href="#dept">누가 쓰나</a><a href="#p-xat">01 지원금 엔진</a><a href="#p-price">02 객실 매칭</a><a href="#p-agent">03 데이터 에이전트</a><a href="#p-pipe">04 파이프라인</a><a href="#p-mkt">05 마케팅 실무</a><a href="#p-causal">06 원인 규명</a><a href="#inc">사고 기록</a><span class="sp"></span><button class="themebtn" id="tt" type="button">◐ 다크</button></div></nav><header class="deck cover"><div class="cover-top"><span class="crumb">Portfolio 2026</span></div><p class="pos-sub">Marketing Domain · Data · Automation</p><div class="pos"><span>데이터 분석</span><i>×</i><span>업무 자동화</span></div><h1>한땀한땀 채우던 엑셀부터<br><em>마케팅·영업·CS 업무 자동화</em>까지</h1>
 <div class="rings">
   <div class="ring">
     <div class="ring-c"><span class="ring-t">문제 정의</span><span class="ring-n">71<small>건</small></span></div>
@@ -727,10 +754,10 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
 <section class="slide deck">
   <div class="slide-head"><span class="crumb">지원금 엔진 &nbsp;/&nbsp; <b>운영 화면</b></span>
     <h2>정책을 바꾸는 일이 배포가 아니라 화면 조작이 되도록</h2>
-    <p class="sub">마케팅 담당자가 정책 그룹·명단·상한·예산을 직접 다루는 사내 웹입니다. 실제 화면을 간소화한 것이고 모든 값은 예시입니다. 아래에서 실제로 눌러볼 수 있습니다.</p></div>
+    <p class="sub">마케팅 담당자가 정책 그룹·명단·상한·예산·쿠폰 발행까지 직접 다루는 사내 웹입니다. 실제 화면의 탭·폼·표 구성을 그대로 옮겼고 모든 값과 이름은 예시입니다. <b>탭을 눌러 보세요 — 14개 화면이 실제로 전환됩니다.</b></p></div>
   <figure>
     <div class="mock-frame" id="mk">
-      <div class="mk-gnav"><span class="mk-logo">꿀스테이</span><span class="mk-t">마케팅 콘솔</span><span class="mk-me">관리자</span></div>
+      <div class="mk-gnav"><span class="mk-logo">꿀스테이</span><span class="mk-t">마케팅 콘솔</span><span class="mk-me">기준 00:00 · 관리자</span></div>
       <div class="mk-body">
         <nav class="mk-grp" aria-label="콘솔 대분류">
           <button type="button" data-g="festa">기획전</button>
@@ -740,7 +767,11 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
         <nav class="mk-tab" data-tabs="festa" hidden>
           <button type="button" data-t="f1" class="on">운영 현황</button>
           <button type="button" data-t="f2">참여 제휴점</button>
-          <button type="button" data-t="f3">예산 관리</button>
+          <button type="button" data-t="f3">기획전 쿠폰 발행</button>
+          <button type="button" data-t="f4">타겟 쿠폰 발행</button>
+          <button type="button" data-t="f5">배너 키워드</button>
+          <button type="button" data-t="f6">제휴점 보고서</button>
+          <button type="button" data-t="f7">예산 관리</button>
         </nav>
         <nav class="mk-tab" data-tabs="xat">
           <button type="button" data-t="x1" class="on">운영</button>
@@ -748,38 +779,53 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
         </nav>
         <nav class="mk-tab" data-tabs="look" hidden>
           <button type="button" data-t="l1" class="on">쿠폰</button>
-          <button type="button" data-t="l2">제휴 네트워크</button>
+          <button type="button" data-t="l2">리뷰</button>
+          <button type="button" data-t="l3">찜</button>
+          <button type="button" data-t="l4">조회</button>
+          <button type="button" data-t="l5">제휴 네트워크</button>
         </nav>
 
+        <!-- ═══ 기획전 · 운영 현황 ═══ -->
         <div class="mk-pane" data-pane="f1" hidden>
           <div class="mk-filter">
             <span class="mk-sel">0000-00 &#9662;</span><span class="mk-sel">제휴점명</span>
             <span class="mk-sel">지역 전체 &#9662;</span><span class="mk-sel">상태 전체 &#9662;</span>
             <span class="mk-sel g" style="margin-left:auto">검색</span>
           </div>
-          <div class="mk-card mk-kpi">
-            <div><span class="k">참여 제휴점</span><span class="v">00곳</span></div>
-            <div><span class="k">참여비 합계</span><span class="v">00,000,000</span></div>
-            <div><span class="k">실사용</span><span class="v">00,000,000</span></div>
-            <div><span class="k">평균 소진율</span><span class="v">00%</span></div>
-            <span class="mk-age">갱신 00:00 · 예시 데이터</span>
+          <div class="mk-card mk-sum">
+            <span class="sb"><i>참여비</i><b>00,000,000</b></span>
+            <span class="sb"><i>예산</i><b>00,000,000</b><em>+이월 000,000</em></span>
+            <span class="sb"><i>지출</i><b>00,000,000</b></span>
+            <span class="sb"><i>잔여</i><b class="good">0,000,000</b></span>
+            <span class="sb"><i>참여</i><b>00</b>곳<em>+이월만 0</em></span>
+            <span class="mk-chips">
+              <span class="mk-chip warn">위험 2</span><span class="mk-chip warn">주의 3</span>
+              <span class="mk-chip">보통 8</span><span class="mk-chip on">양호 12</span>
+              <span class="mk-chip on">자동 19</span><span class="mk-chip">수동 6</span>
+            </span>
           </div>
           <div class="mk-card">
             <table class="mk-tbl">
-              <tr><th>제휴점</th><th>지역</th><th>참여금액</th><th>실사용</th><th>잔여</th><th>소진율</th><th>상태</th></tr>
-              <tr><td>제휴점 A</td><td>서울</td><td class="n">400,000</td><td class="n">548,000</td><td class="n">-148,000</td><td class="n">137%</td><td><span class="st danger">위험</span></td></tr>
-              <tr><td>제휴점 B</td><td>경기</td><td class="n">200,000</td><td class="n">228,000</td><td class="n">-28,000</td><td class="n">114%</td><td><span class="st danger">위험</span></td></tr>
-              <tr><td>제휴점 C</td><td>인천</td><td class="n">200,000</td><td class="n">188,000</td><td class="n">12,000</td><td class="n">94%</td><td><span class="st warn2">주의</span></td></tr>
-              <tr><td>제휴점 D</td><td>대구</td><td class="n">800,000</td><td class="n">688,000</td><td class="n">112,000</td><td class="n">86%</td><td><span class="st warn2">주의</span></td></tr>
-              <tr><td>제휴점 E</td><td>부산</td><td class="n">400,000</td><td class="n">260,000</td><td class="n">140,000</td><td class="n">65%</td><td><span class="st mid">보통</span></td></tr>
-              <tr><td>제휴점 F</td><td>경주</td><td class="n">200,000</td><td class="n">116,000</td><td class="n">84,000</td><td class="n">58%</td><td><span class="st mid">보통</span></td></tr>
-              <tr><td>제휴점 G</td><td>광주</td><td class="n">200,000</td><td class="n">64,000</td><td class="n">136,000</td><td class="n">32%</td><td><span class="st good">양호</span></td></tr>
-              <tr><td>제휴점 H</td><td>대전</td><td class="n">400,000</td><td class="n">96,000</td><td class="n">304,000</td><td class="n">24%</td><td><span class="st good">양호</span></td></tr>
+              <tr><th>지역</th><th>참여</th><th>예산</th><th>지출</th><th>잔여</th><th>소진율</th><th>달성률</th></tr>
+              <tr><td>대구</td><td class="n">9</td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">000,000</td><td class="n">78%</td><td class="n">91%</td></tr>
+              <tr><td>부산</td><td class="n">7</td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">000,000</td><td class="n">64%</td><td class="n">85%</td></tr>
+              <tr><td>수도권</td><td class="n">9</td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">000,000</td><td class="n">52%</td><td class="n">74%</td></tr>
             </table>
-            <p class="mk-hint">소진율 100%를 넘긴 제휴점은 지원금 집행 대상에서 자동으로 빠집니다. 상태 구간은 회차 목표 대비로 계산합니다.</p>
+          </div>
+          <div class="mk-card">
+            <table class="mk-tbl" style="min-width:46rem">
+              <tr><th>참여금액</th><th>제휴점</th><th>운영</th><th>상태</th><th>필요건수</th><th>입실수</th><th>매출</th><th>예상매출</th><th>목표매출</th><th>달성률</th></tr>
+              <tr><td class="n">400,000</td><td>제휴점 A</td><td><span class="st good">자동</span></td><td><span class="st danger">위험</span></td><td class="n crit">+31</td><td class="n">84<span class="mk-sub">숙 61 · 대 23</span></td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">58%</td></tr>
+              <tr><td class="n">200,000</td><td>제휴점 B</td><td><span class="st good">자동</span></td><td><span class="st warn2">주의</span></td><td class="n crit">+12</td><td class="n">57<span class="mk-sub">숙 40 · 대 17</span></td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">72%</td></tr>
+              <tr><td class="n">200,000</td><td>제휴점 C</td><td><span class="st mid">수동</span></td><td><span class="st mid">보통</span></td><td class="n">+4</td><td class="n">63<span class="mk-sub">숙 51 · 대 12</span></td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">88%</td></tr>
+              <tr><td class="n">800,000</td><td>제휴점 D</td><td><span class="st good">자동</span></td><td><span class="st good">양호</span></td><td class="n">-</td><td class="n">142<span class="mk-sub">숙 98 · 대 44</span></td><td class="n">00,000,000</td><td class="n">00,000,000</td><td class="n">0,000,000</td><td class="n">104%</td></tr>
+              <tr><td class="n">400,000</td><td>제휴점 E</td><td><span class="st good">자동</span></td><td><span class="st good">양호</span></td><td class="n">-</td><td class="n">96<span class="mk-sub">숙 70 · 대 26</span></td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">97%</td></tr>
+            </table>
+            <p class="mk-hint">제휴점명을 누르면 비용 상세가 열립니다. 필요건수 = 목표까지 남은 입실. 예상은 요일 가중 진행률로 계산합니다.</p>
           </div>
         </div>
 
+        <!-- ═══ 기획전 · 참여 제휴점 ═══ -->
         <div class="mk-pane" data-pane="f2" hidden>
           <div class="mk-split">
             <div>
@@ -791,9 +837,21 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
                   <tr><td class="n">2</td><td>제휴점 B</td><td>KEY-0002</td><td class="n">200,000</td></tr>
                   <tr><td class="n">3</td><td>제휴점 C</td><td>KEY-0003</td><td class="n">200,000</td></tr>
                   <tr><td class="n">4</td><td>제휴점 D</td><td>KEY-0004</td><td class="n">800,000</td></tr>
-                  <tr><td class="n">5</td><td>제휴점 E</td><td>KEY-0005</td><td class="n">400,000</td></tr>
                 </table>
-                <p class="mk-hint">월 중에 새로 들어온 곳은 한 줄만 추가합니다. 명단 전체를 다시 붙여넣지 않습니다.</p>
+              </div>
+              <div class="mk-card">
+                <div class="mk-h3">한 곳 추가 <span>월 중에 들어온 곳 — 명단 전체를 다시 붙여넣지 않습니다</span></div>
+                <div class="mk-filter" style="margin:0">
+                  <span class="mk-in" style="flex:1;min-width:9rem">KEY-…</span>
+                  <span class="mk-sel">20만 &#9662;</span><span class="mk-sel g">추가</span>
+                </div>
+              </div>
+              <div class="mk-card">
+                <div class="mk-h3">명단 붙여넣기 <span>제휴점키 [공백] 참여금액 — 한 줄에 하나</span></div>
+                <textarea class="mk-ta" rows="3" placeholder="KEY-0001 20&#10;KEY-0002 40&#10;KEY-0003 80"></textarea>
+                <div class="mk-filter" style="margin:6px 0 0">
+                  <span class="mk-sel">현재 명단 불러오기</span><span class="mk-sel g">확인하고 저장</span>
+                </div>
               </div>
             </div>
             <div>
@@ -806,80 +864,226 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
                 </table>
               </div>
               <div class="mk-card">
+                <div class="mk-h3">처리 방식 <span>영업·지사가 요청 → 마케팅이 확정</span></div>
                 <table class="mk-tbl">
-                  <tr><th>제휴점</th><th>잔여</th><th>방식</th><th>상태</th></tr>
-                  <tr><td>제휴점 F</td><td class="n">84,000</td><td>다음 회차 이월</td><td><span class="mk-chip on">확정</span></td></tr>
-                  <tr><td>제휴점 G</td><td class="n">136,000</td><td>상품권 지급</td><td><span class="mk-chip warn">검토</span></td></tr>
+                  <tr><th>제휴점</th><th>잔여</th><th>방식</th><th>상태</th><th></th></tr>
+                  <tr><td>제휴점 F</td><td class="n">84,000</td><td>다음 회차 이월</td><td><span class="mk-chip on">확정</span></td><td></td></tr>
+                  <tr><td>제휴점 G</td><td class="n">136,000</td><td>상품권 지급</td><td><span class="mk-chip warn">검토</span></td><td><span class="mk-sel" style="padding:1px 6px">승인</span></td></tr>
                 </table>
-                <p class="mk-hint">잔액을 이월할지 상품권으로 줄지는 영업·지사가 요청하고 마케팅이 확정합니다.</p>
+                <p class="mk-hint">상품권으로 확정하면 코드가 실제 발행되고 감사 로그에 남습니다.</p>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- ═══ 기획전 · 쿠폰 발행 ═══ -->
         <div class="mk-pane" data-pane="f3" hidden>
           <div class="mk-card">
-            <table class="mk-tbl">
-              <tr><th>제휴점</th><th>참여비</th><th>이월분</th><th>총예산</th><th>기획전</th><th>타겟</th><th>지원금</th><th>잔여</th><th>소진율</th></tr>
-              <tr><td>제휴점 A</td><td class="n">400,000</td><td class="n">0</td><td class="n">400,000</td><td class="n">184,000</td><td class="n">123,000</td><td class="n">241,000</td><td class="n">-148,000</td><td class="n">137%</td></tr>
-              <tr><td>제휴점 B</td><td class="n">200,000</td><td class="n">0</td><td class="n">200,000</td><td class="n">95,000</td><td class="n">41,000</td><td class="n">92,000</td><td class="n">-28,000</td><td class="n">114%</td></tr>
-              <tr><td>제휴점 C</td><td class="n">200,000</td><td class="n">0</td><td class="n">200,000</td><td class="n">79,000</td><td class="n">29,000</td><td class="n">80,000</td><td class="n">12,000</td><td class="n">94%</td></tr>
-              <tr><td>제휴점 F</td><td class="n">200,000</td><td class="n">84,000</td><td class="n">284,000</td><td class="n">64,000</td><td class="n">0</td><td class="n">52,000</td><td class="n">168,000</td><td class="n">41%</td></tr>
+            <div class="mk-h3">제휴점키 붙여넣기 <span>정책 편집과 발행 미리보기가 한 표입니다</span></div>
+            <textarea class="mk-ta" rows="2" placeholder="KEY-0001&#10;KEY-0002"></textarea>
+            <div class="mk-filter" style="margin:8px 0 0">
+              <span class="mk-sel">회차 0000-00 &#9662;</span><span class="mk-sel">발행일 00-00</span>
+              <span class="mk-sel">종료일 00-00</span><span class="mk-sel">유효 6일</span>
+              <span style="margin-left:auto"></span>
+              <span class="mk-sel">줄 추가</span><span class="mk-sel">정책 저장</span><span class="mk-sel g">발행 자료 생성</span>
+            </div>
+          </div>
+          <div class="mk-card">
+            <table class="mk-tbl" style="min-width:34rem">
+              <tr><th>쿠폰명</th><th>제휴점</th><th>대상</th><th>상품 유형</th><th>금액</th><th>발행수</th></tr>
+              <tr><td>0월 기획전 숙박 3,000</td><td>제휴점 A</td><td>전체 회원</td><td>숙박</td><td class="n">3,000</td><td class="n">50,000</td></tr>
+              <tr><td>0월 기획전 대실 2,000</td><td>제휴점 A</td><td>전체 회원</td><td>대실</td><td class="n">2,000</td><td class="n">50,000</td></tr>
+              <tr><td>0월 기획전 숙박 3,000</td><td>제휴점 B</td><td>전체 회원</td><td>숙박</td><td class="n">3,000</td><td class="n">50,000</td></tr>
             </table>
-            <p class="mk-hint">본사 부담을 항목별로 나눠 집계합니다. 이월분이 있는 제휴점은 총예산이 참여비보다 큽니다.</p>
+            <p class="mk-hint">키를 넣으면 표가 제휴점 × 상품 유형으로 전개됩니다. 값을 고치면 같은 대상·유형 줄 전체가 함께 바뀝니다.</p>
+          </div>
+          <div class="mk-card mk-files">
+            <span class="mk-chip on">발행 자료 3개 생성 · 2.8초</span>
+            <span class="mk-file">📄 쿠폰마스터_등록용.xlsx</span>
+            <span class="mk-file">📄 발행수량_검수용.xlsx</span>
+            <span class="mk-file">📄 정책_요약.xlsx</span>
           </div>
         </div>
 
-        <div class="mk-pane" data-pane="x1">
-          <div class="mk-card mk-kpi">
-            <div><span class="k">오늘 지원금 지출(전 정책 그룹)</span><span class="v">000,000</span></div>
-            <div><span class="k">당월 누적</span><span class="v">0,000,000</span></div>
-            <div><span class="k">활성 정책 그룹</span><span class="v">0 / 0</span></div>
-            <span class="mk-age">갱신 00:00 · 예시 데이터</span>
+        <!-- ═══ 기획전 · 타겟 쿠폰 발행 ═══ -->
+        <div class="mk-pane" data-pane="f4" hidden>
+          <div class="mk-card">
+            <div class="mk-h3">제휴점키 붙여넣기</div>
+            <textarea class="mk-ta" rows="2" placeholder="KEY-0001&#10;KEY-0002"></textarea>
+            <div class="mk-filter" style="margin:8px 0 0">
+              <span class="mk-sel">할인액 3,000</span><span class="mk-sel">목표모수 3,000</span>
+              <span class="mk-sel">발행일 00-00</span><span class="mk-sel">종료일 00-00</span>
+              <span class="mk-sel">세트당 최대 50,000</span>
+              <span class="mk-sel g" style="margin-left:auto">발행 자료 생성</span>
+            </div>
           </div>
-          <div class="mk-grid">
-            <div class="mk-card mk-rule"><div class="mk-rh"><b>정책 그룹 A</b><span class="mk-chip on">가동</span></div>
-              <dl><dt>적용 제휴점</dt><dd>71</dd><dt>일 상한</dt><dd>250,000</dd><dt>오늘 조정</dt><dd>407건</dd></dl></div>
-            <div class="mk-card mk-rule"><div class="mk-rh"><b>정책 그룹 B</b><span class="mk-chip on">가동</span></div>
-              <dl><dt>적용 제휴점</dt><dd>15</dd><dt>일 상한</dt><dd>150,000</dd><dt>오늘 조정</dt><dd>88건</dd></dl></div>
-            <div class="mk-card mk-rule"><div class="mk-rh"><b>정책 그룹 C</b><span class="mk-chip warn">한도 도달</span></div>
-              <dl><dt>적용 제휴점</dt><dd>5</dd><dt>월 상한</dt><dd>1,800,000</dd><dt>상태</dt><dd>자동 0원</dd></dl></div>
-            <div class="mk-card mk-rule off"><div class="mk-rh"><b>정책 그룹 D</b><span class="mk-chip">기간 외</span></div>
-              <dl><dt>적용 제휴점</dt><dd>27</dd><dt>사용 기간</dt><dd>00.00~00.00</dd><dt>상태</dt><dd>전환 대기</dd></dl></div>
-          </div>
-          <p class="mk-h3">상한 임박 · 초과 <span>(80% 이상)</span></p>
           <div class="mk-card">
             <table class="mk-tbl">
+              <tr><th>쿠폰명</th><th>제휴점</th><th>대상</th><th>할인액</th><th>발행수</th></tr>
+              <tr><td>타겟 쿠폰 3,000</td><td>제휴점 A</td><td>타겟 세그먼트</td><td class="n">3,000</td><td class="n">3,000</td></tr>
+              <tr><td>타겟 쿠폰 3,000</td><td>제휴점 B</td><td>타겟 세그먼트</td><td class="n">3,000</td><td class="n">3,000</td></tr>
+            </table>
+            <p class="mk-hint">예전엔 이 자료를 엑셀 네 종으로 손으로 만들었습니다 — 352초가 2.8초가 된 화면입니다.</p>
+          </div>
+        </div>
+
+        <!-- ═══ 기획전 · 배너 키워드 ═══ -->
+        <div class="mk-pane" data-pane="f5" hidden>
+          <div class="mk-filter">
+            <span class="mk-sel">회차 0000-00 &#9662;</span>
+            <span class="mk-sel">참여 명단으로 재생성</span><span class="mk-sel">검색어 CSV 올리기</span>
+            <span class="mk-sel g" style="margin-left:auto">저장</span>
+          </div>
+          <div class="mk-card">
+            <table class="mk-tbl">
+              <tr><th>제휴점</th><th>지역</th><th>배너 키워드</th><th>검색수</th><th>상태</th></tr>
+              <tr><td>제휴점 A</td><td>부산</td><td>해운대 · 해운대역</td><td class="n">00,000</td><td><span class="mk-chip on">적용</span></td></tr>
+              <tr><td>제휴점 B</td><td>부산</td><td>서면 · 서면역</td><td class="n">0,000</td><td><span class="mk-chip on">적용</span></td></tr>
+              <tr><td>제휴점 C</td><td>대구</td><td>동성로</td><td class="n">0,000</td><td><span class="mk-chip warn">검수</span></td></tr>
+            </table>
+            <p class="mk-hint">검색어 파일은 xlsx 그대로 올립니다(2,500행). 적용은 크롬 확장이 CMS 화면에서 일괄 처리합니다.</p>
+          </div>
+        </div>
+
+        <!-- ═══ 기획전 · 제휴점 보고서 ═══ -->
+        <div class="mk-pane" data-pane="f6" hidden>
+          <div class="mk-filter">
+            <span class="mk-in" style="min-width:11rem">제휴점명 또는 제휴점키</span>
+            <span class="mk-sel">회차 0000-00 &#9662;</span><span class="mk-sel g">조회</span>
+            <span class="mk-hint" style="margin:0 0 0 4px">제휴점명 일부만 넣어도 됩니다</span>
+          </div>
+          <div class="mk-card">
+            <div class="mk-h3">제휴점 A <span>참여 4회차 · 영업 공유용 양식</span></div>
+            <table class="mk-tbl" style="min-width:36rem">
+              <tr><th>참여월</th><th>구분</th><th>매출</th><th>신규회원</th><th>재방문유저</th><th>재방문율</th><th>본사쿠폰</th><th>타겟쿠폰</th><th>지출합계</th></tr>
+              <tr><td>0000-00</td><td>참여</td><td class="n">0,000,000</td><td class="n">00</td><td class="n">000</td><td class="n">38%</td><td class="n">000,000</td><td class="n">000,000</td><td class="n">000,000</td></tr>
+              <tr><td>0000-00</td><td>참여</td><td class="n">0,000,000</td><td class="n">00</td><td class="n">000</td><td class="n">41%</td><td class="n">000,000</td><td class="n">000,000</td><td class="n">000,000</td></tr>
+              <tr><td>0000-00</td><td>미참여</td><td class="n">0,000,000</td><td class="n">0</td><td class="n">000</td><td class="n">35%</td><td class="n">0</td><td class="n">0</td><td class="n">0</td></tr>
+            </table>
+            <p class="mk-hint">참여한 달과 안 한 달을 같은 표에서 비교합니다. 영업이 제휴점에 보여주는 보고서 그대로입니다.</p>
+          </div>
+        </div>
+
+        <!-- ═══ 기획전 · 예산 관리 ═══ -->
+        <div class="mk-pane" data-pane="f7" hidden>
+          <div class="mk-filter">
+            <span class="mk-sel">회차 0000-00 &#9662;</span>
+            <span class="mk-sel">원장 동기화</span><span class="mk-sel">실사용 재조회</span>
+            <span class="mk-sel">한도 초과 감시</span><span class="mk-sel">상품권</span><span class="mk-sel">감사 로그</span>
+            <span style="margin-left:auto"></span>
+            <span class="mk-sel">세무 CSV</span><span class="mk-sel g">회차 마감</span>
+          </div>
+          <div class="mk-card">
+            <table class="mk-tbl" style="min-width:44rem">
+              <tr><th>제휴점</th><th>참여비</th><th>이월분</th><th>예산</th><th>실사용</th><th>기획전</th><th>타겟</th><th>지원금</th><th class="off">웰컴</th><th class="off">첫예약</th><th>잔여</th><th>소진율</th></tr>
+              <tr><td>제휴점 A</td><td class="n">400,000</td><td class="n">0</td><td class="n">400,000</td><td class="n">548,000</td><td class="n">184,000</td><td class="n">123,000</td><td class="n">241,000</td><td class="n off">00,000</td><td class="n off">00,000</td><td class="n crit">-148,000</td><td class="n crit">137%</td></tr>
+              <tr><td>제휴점 B</td><td class="n">200,000</td><td class="n">0</td><td class="n">200,000</td><td class="n">228,000</td><td class="n">95,000</td><td class="n">41,000</td><td class="n">92,000</td><td class="n off">00,000</td><td class="n off">0,000</td><td class="n crit">-28,000</td><td class="n crit">114%</td></tr>
+              <tr><td>제휴점 C</td><td class="n">200,000</td><td class="n">0</td><td class="n">200,000</td><td class="n">188,000</td><td class="n">79,000</td><td class="n">29,000</td><td class="n">80,000</td><td class="n off">00,000</td><td class="n off">0,000</td><td class="n">12,000</td><td class="n">94%</td></tr>
+              <tr><td>제휴점 F</td><td class="n">200,000</td><td class="n">84,000</td><td class="n">284,000</td><td class="n">180,000</td><td class="n">64,000</td><td class="n">64,000</td><td class="n">52,000</td><td class="n off">00,000</td><td class="n off">0,000</td><td class="n">104,000</td><td class="n">63%</td></tr>
+            </table>
+            <p class="mk-hint">회색 열(웰컴·첫예약)은 본사 부담이지만 기획전 비용이 아니라 합계 밖입니다. 비용 정의가 표에 그대로 박혀 있습니다.</p>
+          </div>
+          <div class="mk-card">
+            <div class="mk-h3">감사 로그 <span>금액 이동 전건 — 고치거나 지우지 않습니다</span></div>
+            <table class="mk-tbl">
+              <tr><th>일시</th><th>제휴점</th><th>구분</th><th>금액</th><th>작성자</th></tr>
+              <tr><td>00-00 14:02</td><td>제휴점 F</td><td>이월 확정</td><td class="n">84,000</td><td>마케팅</td></tr>
+              <tr><td>00-00 11:31</td><td>제휴점 G</td><td>상품권 발행</td><td class="n">136,000</td><td>마케팅</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- ═══ 지원금 · 운영 (정책 그룹 목록 + 상세) ═══ -->
+        <div class="mk-pane" data-pane="x1">
+          <div class="mk-side">
+            <div>
+              <span class="mk-sel g" style="display:block;text-align:center;margin-bottom:6px">+ 정책 그룹 추가</span>
+              <div class="mk-rsi on">정책 그룹 A<span class="mk-chip on">가동</span></div>
+              <div class="mk-rsi">정책 그룹 B<span class="mk-chip on">가동</span></div>
+              <div class="mk-rsi">정책 그룹 C<span class="mk-chip warn">한도</span></div>
+              <div class="mk-rsi">정책 그룹 D<span class="mk-chip">기간 외</span></div>
+            </div>
+            <div>
+              <div class="mk-card">
+                <div class="mk-h3" style="margin-top:0">정책 그룹 A <span class="mk-chip on">가동</span>
+                  <span style="margin-left:auto;display:inline-flex;gap:4px">
+                    <span class="mk-sel" style="padding:1px 7px">복제</span>
+                    <span class="mk-sel" style="padding:1px 7px">비활성화</span></span></div>
+                <p class="mk-hint" style="margin:0 0 7px">오늘 000,000원 · 당월 0,000,000원 / 예산 합 00,000,000원 &nbsp;·&nbsp; 사용 기간 00-01 ~ 무기한</p>
+                <div class="mk-grid">
+                  <div class="mk-rule"><dl>
+                    <dt>건당 상한 · 숙박</dt><dd>5,000</dd>
+                    <dt>건당 상한 · 대실</dt><dd>3,000</dd>
+                    <dt>일 상한 기본</dt><dd>250,000</dd>
+                    <dt>판매가 격차 한도</dt><dd>00%</dd></dl></div>
+                  <div class="mk-rule"><dl>
+                    <dt>조정 단위</dt><dd>1,000원 올림</dd>
+                    <dt>슬롯별 차등</dt><dd>OFF</dd>
+                    <dt>알림 채널</dt><dd>#자동조정-알림</dd>
+                    <dt>알림 봇</dt><dd>마케팅</dd></dl></div>
+                </div>
+                <div class="mk-filter" style="margin:8px 0 0">
+                  <span class="mk-sel">참여금액별 설정</span><span class="mk-sel g">설정 저장</span><span class="mk-sel">그룹 합치기</span>
+                </div>
+                <p class="mk-hint">적용 순서: 제휴점 개별값 → 참여금액별 → 그룹 기본값. 기본값이 개별값에 가려지는 곳은 셀에 배지가 붙습니다.</p>
+              </div>
+              <div class="mk-card">
+                <div class="mk-h3">제휴점 명단 <span>71곳</span>
+                  <span style="margin-left:auto;display:inline-flex;gap:4px">
+                    <span class="mk-sel g" style="padding:1px 7px">상한 저장</span>
+                    <span class="mk-sel" style="padding:1px 7px">명단 수정</span></span></div>
+                <table class="mk-tbl" style="min-width:38rem">
+                  <tr><th>제휴점</th><th>참여금액</th><th>상한 숙박</th><th>상한 대실</th><th>일 상한</th><th>개별</th><th>오늘</th><th>당월</th><th>일 소진</th><th>월 소진</th></tr>
+                  <tr><td>제휴점 A</td><td class="n">400,000</td><td class="n">5,000</td><td class="n">3,000</td><td class="n">250,000</td><td class="n">2</td><td class="n">00,000</td><td class="n">000,000</td><td class="n">42%</td><td class="n crit">108%</td></tr>
+                  <tr><td>제휴점 B</td><td class="n">200,000</td><td class="n">5,000</td><td class="n">3,000</td><td class="n">250,000</td><td class="n">-</td><td class="n">00,000</td><td class="n">000,000</td><td class="n">31%</td><td class="n">66%</td></tr>
+                  <tr><td>제휴점 C</td><td class="n">200,000</td><td class="n">7,000</td><td class="n">3,000</td><td class="n">150,000</td><td class="n">1</td><td class="n">0,000</td><td class="n">00,000</td><td class="n">12%</td><td class="n">28%</td></tr>
+                </table>
+                <textarea class="mk-ta" rows="2" style="margin-top:8px" placeholder="명단 수정 — 제휴점키를 한 줄에 하나씩. [이름 확인] 후 [명단 반영]"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ 지원금 · 이력 · 리포트 ═══ -->
+        <div class="mk-pane" data-pane="x2" hidden>
+          <div class="mk-filter">
+            <span class="mk-sel">기준일 00-00</span><span class="mk-sel">일일</span><span class="mk-sel">주간(지난주)</span>
+            <span style="margin-left:auto"></span>
+            <span class="mk-sel">최근 3일 &#9662;</span><span class="mk-sel">제휴점명</span>
+            <span class="mk-sel">상품 유형 &#9662;</span><span class="mk-sel">결과 &#9662;</span>
+            <span class="mk-sel g">검색</span><span class="mk-sel">💰 고액 지원금</span>
+          </div>
+          <div class="mk-card">
+            <table class="mk-tbl" style="min-width:34rem">
+              <tr><th>시각</th><th>정책 그룹</th><th>제휴점</th><th>상품 유형</th><th>이전</th><th>변경</th><th>결과</th><th>판정 사유</th></tr>
+              <tr><td class="n">14:00</td><td>A</td><td>제휴점 A</td><td>숙박</td><td class="n">3,000</td><td class="n">5,000</td><td><span class="st good">전송</span></td><td>경쟁가 하락</td></tr>
+              <tr><td class="n">14:00</td><td>A</td><td>제휴점 B</td><td>대실</td><td class="n">2,000</td><td class="n">0</td><td><span class="st mid">제외</span></td><td>월 상한 도달</td></tr>
+              <tr><td class="n">14:00</td><td>B</td><td>제휴점 C</td><td>숙박</td><td class="n">4,000</td><td class="n">0</td><td><span class="st danger">실패</span></td><td>수집 실패 — 보류</td></tr>
+              <tr><td class="n">14:00</td><td>A</td><td>제휴점 D</td><td>숙박</td><td class="n">0</td><td class="n">3,000</td><td><span class="st good">전송</span></td><td>객실 매핑 검수 완료</td></tr>
+              <tr><td class="n">13:00</td><td>C</td><td>제휴점 E</td><td>숙박</td><td class="n">5,000</td><td class="n">0</td><td><span class="st mid">제외</span></td><td>판매가 격차 초과</td></tr>
+            </table>
+            <p class="mk-hint">조정마다 판정 사유가 남습니다. 어떤 값이 왜 나갔는지 되짚을 때 이 이력을 씁니다.</p>
+          </div>
+          <div class="mk-card">
+            <div class="mk-h3">상한 임박 · 초과 <span>80% 이상</span></div>
+            <table class="mk-tbl">
               <tr><th>상태</th><th>정책 그룹</th><th>제휴점</th><th>구분</th><th>누적</th><th>상한</th><th>소진율</th></tr>
-              <tr><td><span class="st danger">초과</span></td><td>정책 그룹 C</td><td>제휴점 A</td><td>월</td><td class="n">1,944,000</td><td class="n">1,800,000</td><td class="n">108%</td></tr>
-              <tr><td><span class="st danger">초과</span></td><td>정책 그룹 A</td><td>제휴점 B</td><td>일</td><td class="n">265,000</td><td class="n">250,000</td><td class="n">106%</td></tr>
-              <tr><td><span class="st warn2">임박</span></td><td>정책 그룹 A</td><td>제휴점 C</td><td>일</td><td class="n">240,000</td><td class="n">250,000</td><td class="n">96%</td></tr>
-              <tr><td><span class="st warn2">임박</span></td><td>정책 그룹 B</td><td>제휴점 D</td><td>월</td><td class="n">774,000</td><td class="n">900,000</td><td class="n">86%</td></tr>
-              <tr><td><span class="st warn2">임박</span></td><td>정책 그룹 A</td><td>제휴점 E</td><td>일</td><td class="n">205,000</td><td class="n">250,000</td><td class="n">82%</td></tr>
+              <tr><td><span class="st danger">초과</span></td><td>C</td><td>제휴점 A</td><td>월</td><td class="n">1,944,000</td><td class="n">1,800,000</td><td class="n crit">108%</td></tr>
+              <tr><td><span class="st warn2">임박</span></td><td>A</td><td>제휴점 C</td><td>일</td><td class="n">240,000</td><td class="n">250,000</td><td class="n">96%</td></tr>
+              <tr><td><span class="st warn2">임박</span></td><td>B</td><td>제휴점 D</td><td>월</td><td class="n">774,000</td><td class="n">900,000</td><td class="n">86%</td></tr>
             </table>
             <p class="mk-hint">초과한 곳은 10분 주기 감시 작업이 다음 실행에서 0원으로 내립니다.</p>
           </div>
         </div>
 
-        <div class="mk-pane" data-pane="x2" hidden>
-          <div class="mk-card">
-            <table class="mk-tbl">
-              <tr><th>시각</th><th>제휴점</th><th>상품 유형</th><th>이전</th><th>변경</th><th>판정 사유</th></tr>
-              <tr><td class="n">14:00</td><td>제휴점 A</td><td>숙박</td><td class="n">3,000</td><td class="n">5,000</td><td>경쟁가 하락</td></tr>
-              <tr><td class="n">14:00</td><td>제휴점 B</td><td>대실</td><td class="n">2,000</td><td class="n">0</td><td>월 상한 도달</td></tr>
-              <tr><td class="n">14:00</td><td>제휴점 C</td><td>숙박</td><td class="n">4,000</td><td class="n">0</td><td>수집 실패</td></tr>
-              <tr><td class="n">14:00</td><td>제휴점 D</td><td>숙박</td><td class="n">0</td><td class="n">3,000</td><td>객실 매핑 검수 완료</td></tr>
-              <tr><td class="n">14:00</td><td>제휴점 E</td><td>대실</td><td class="n">6,000</td><td class="n">6,000</td><td>변동 없음</td></tr>
-              <tr><td class="n">13:00</td><td>제휴점 F</td><td>숙박</td><td class="n">5,000</td><td class="n">0</td><td>판매가 격차 초과</td></tr>
-            </table>
-            <p class="mk-hint">조정마다 판정 사유가 남습니다. 나중에 어떤 값이 왜 나갔는지 되짚을 때 이 이력을 씁니다.</p>
-          </div>
-        </div>
-
+        <!-- ═══ 조회 · 쿠폰 ═══ -->
         <div class="mk-pane" data-pane="l1" hidden>
           <div class="mk-filter">
-            <span class="mk-sel">기간 0000.00.00 ~ 0000.00.00 &#9662;</span>
-            <span class="mk-sel">쿠폰명</span><span class="mk-sel g">조회</span>
+            <span class="mk-chip">오늘</span><span class="mk-chip">이번주</span><span class="mk-chip on">이번달</span>
+            <span class="mk-chip">지난달</span><span class="mk-chip">최근 30일</span>
+            <span class="mk-sel">0000.00.01 ~ 0000.00.31</span>
+            <span class="mk-in" style="min-width:7rem">쿠폰명</span>
+            <span class="mk-sel g">조회</span><span class="mk-sel">엑셀 내려받기</span>
           </div>
           <div class="mk-card">
             <table class="mk-tbl">
@@ -893,20 +1097,54 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
           </div>
         </div>
 
+        <!-- ═══ 조회 · 리뷰 / 찜 / 조회 ═══ -->
         <div class="mk-pane" data-pane="l2" hidden>
           <div class="mk-card">
             <table class="mk-tbl">
-              <tr><th>제휴점</th><th>지역</th><th>당월 지원금</th><th>월 상한</th><th>소진율</th><th>상태</th></tr>
-              <tr><td>제휴점 A</td><td>서울</td><td class="n">1,944,000</td><td class="n">1,800,000</td><td class="n">108%</td><td><span class="st danger">정지</span></td></tr>
-              <tr><td>제휴점 D</td><td>대구</td><td class="n">774,000</td><td class="n">900,000</td><td class="n">86%</td><td><span class="st warn2">임박</span></td></tr>
-              <tr><td>제휴점 E</td><td>부산</td><td class="n">248,000</td><td class="n">450,000</td><td class="n">55%</td><td><span class="st mid">운영</span></td></tr>
-              <tr><td>제휴점 G</td><td>광주</td><td class="n">80,000</td><td class="n">250,000</td><td class="n">32%</td><td><span class="st good">운영</span></td></tr>
+              <tr><th>일자</th><th>제휴점</th><th>평점</th><th>리뷰</th></tr>
+              <tr><td>00-00</td><td>제휴점 A</td><td class="n">4.8</td><td>리뷰 본문 예시 — 개인정보는 응답 시점에 가립니다</td></tr>
+              <tr><td>00-00</td><td>제휴점 B</td><td class="n">4.2</td><td>리뷰 본문 예시</td></tr>
             </table>
-            <p class="mk-hint">영업·마케팅이 자주 묻던 조회를 슬랙에서 화면으로 옮겼습니다.</p>
+            <p class="mk-hint">영업·마케팅이 슬랙에서 자주 묻던 조회 4종을 화면으로 옮겼습니다.</p>
           </div>
         </div>
+        <div class="mk-pane" data-pane="l3" hidden>
+          <div class="mk-card">
+            <table class="mk-tbl">
+              <tr><th>제휴점</th><th>기간 찜</th><th>누적 찜</th></tr>
+              <tr><td>제휴점 A</td><td class="n">000</td><td class="n">0,000</td></tr>
+              <tr><td>제휴점 B</td><td class="n">00</td><td class="n">0,000</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="mk-pane" data-pane="l4" hidden>
+          <div class="mk-card">
+            <table class="mk-tbl">
+              <tr><th>제휴점</th><th>기간 조회수</th><th>예약 전환</th></tr>
+              <tr><td>제휴점 A</td><td class="n">0,000</td><td class="n">0.0%</td></tr>
+              <tr><td>제휴점 B</td><td class="n">0,000</td><td class="n">0.0%</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- ═══ 조회 · 제휴 네트워크 ═══ -->
+        <div class="mk-pane" data-pane="l5" hidden>
+          <div class="mk-card" style="font-size:10.5px;line-height:1.7">
+            <b>제휴 네트워크 = 정책 그룹 하나.</b> 기획전과 달리 참여비 환원이 없어 목표·상태 대신
+            매출·입실·비용·지원금 소진만 봅니다. 예전엔 상대방 시트에만 있어 그 시트를 열어야 상황을 알 수 있었습니다.
+          </div>
+          <div class="mk-card">
+            <table class="mk-tbl">
+              <tr><th>네트워크</th><th>제휴점</th><th>오늘 지원금</th><th>당월</th><th>월 상한</th><th>소진율</th></tr>
+              <tr><td>네트워크 A</td><td class="n">00곳</td><td class="n">00,000</td><td class="n">0,000,000</td><td class="n">0,000,000</td><td class="n">64%</td></tr>
+              <tr><td>네트워크 B</td><td class="n">0곳</td><td class="n">0,000</td><td class="n">000,000</td><td class="n">000,000</td><td class="n">41%</td></tr>
+            </table>
+          </div>
+        </div>
+
       </div>
     </div>
+    <figcaption>실제 콘솔의 그룹 3개 · 탭 14개를 그대로 옮긴 목업입니다. 명단 붙여넣기, 쿠폰 발행 자료 생성, 정책 그룹별 상한, 조정 이력의 판정 사유까지 — 담당자가 배포 없이 화면에서 끝내는 범위가 이만큼입니다.</figcaption>
   </figure>
 <figure style="margin-top:2.6rem">
   <div class="slack">
@@ -1273,7 +1511,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
   <figcaption class="shotcap">담당자가 매일 아침 보는 시트입니다. 노란 칸이 월말 예측값이고, 항목마다 다른 모델이 붙어 있습니다. 예전에는 이 표를 사람이 채웠습니다.</figcaption>
 </figure>
 </section>
-<section class="chapter deck"><div class="chapter-in"><span class="chapter-n">Chapter 2</span><h2 class="chapter-t">그 시스템을 만들게 된 배경</h2><p class="chapter-d">자동화 이전에 직접 굴리던 마케팅 실무와, 지표가 움직인 원인을 밝히던 분석입니다. 도메인을 먼저 안 상태에서 자동화로 넘어간 것이 설계의 근거가 됐습니다.</p></div></section><section class="slide deck" id="p-mkt"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 05</span><h2 class="ptitle">마케팅 실무 · 기획전 운영</h2><p class="plede">자동화 이전에 직접 굴리던 실무입니다. 쿠폰 캠페인 기획·발행과 매달 도는 기획전 회차 운영을 맡았고, 여기서 겪은 반복이 이후 자동화의 설계도가 됐습니다.</p><div class="pmeta"><span>2025.09 – 현재</span><span>기획 · 집행 · 분석</span><span>실무</span></div><ul><li>쿠폰 캠페인 기획과 발행 — 대상 추출부터 성과 분석까지</li><li>기획전 회차 운영 — 목표 설정, 쿠폰 발행·세팅, 키비주얼 제공, 미달 리커버리, 예산 마감</li><li>이용자 세그먼트 8종 정의, 웰컴 쿠폰팩 설계, 재구매 코호트 분석</li><li>마케팅 · 영업 · 경영지원 · 개발 네 부서를 오가며 회차 기준과 절차를 조율</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">103건</span><span class="win-k">7개월간 담당한 캠페인. 쿠폰 발행 세트 65건</span></div><div class="win"><span class="win-v">71건</span><span class="win-k">기획전 한 회차 업무를 전수 분해. 자동 14 · 반자동 38 · 수동 19로 정리</span></div><div class="win"><span class="win-v">749원</span><span class="win-k">휴면 고객 캠페인의 예약 1건당 단가. 손익분기 3,000원의 4분의 1</span></div><div class="win"><span class="win-v">51만 행</span><span class="win-k">캠페인 한 건에 다루던 분석 시트 최대 행수. 손작업을 스크립트로 옮긴 근거</span></div></div></div></section>
+<section class="chapter deck"><div class="chapter-in"><span class="chapter-n">Chapter 2</span><h2 class="chapter-t">그 시스템을 만들게 된 배경</h2><p class="chapter-d">자동화 이전에 직접 굴리던 마케팅 실무와, 지표가 움직인 원인을 밝히던 분석입니다. 도메인을 먼저 안 상태에서 자동화로 넘어간 것이 설계의 근거가 됐습니다.</p></div></section><section class="slide deck" id="p-mkt"><div class="pcover"><div class="pcover-l"><span class="pnum">PROJECT 05</span><h2 class="ptitle">마케팅 실무 · 기획전 운영</h2><p class="plede">자동화 이전에 직접 굴리던 실무입니다. 쿠폰 캠페인 기획·발행과 매달 도는 기획전 회차 운영을 맡았고, 여기서 겪은 반복이 이후 자동화의 설계도가 됐습니다.</p><div class="pmeta"><span>2025.09 – 현재</span><span>기획 · 집행 · 분석</span><span>실무</span></div><ul><li>쿠폰 캠페인 기획과 발행 — 대상 추출부터 성과 분석까지</li><li>기획전 회차 운영 — 목표 설정, 쿠폰 발행·세팅, 키비주얼 제공, 미달 리커버리, 예산 마감</li><li>이용자 세그먼트 8종 정의, 웰컴 쿠폰팩 설계, 재구매 코호트 분석</li><li>마케팅 · 영업 · 운영 · 개발 네 부서를 오가며 회차 기준과 절차를 조율</li></ul></div><div class="pwins"><span class="lbl">Results</span><div class="win"><span class="win-v">103건</span><span class="win-k">7개월간 담당한 캠페인. 쿠폰 발행 세트 65건</span></div><div class="win"><span class="win-v">71건</span><span class="win-k">기획전 한 회차 업무를 전수 분해. 자동 14 · 반자동 38 · 수동 19로 정리</span></div><div class="win"><span class="win-v">749원</span><span class="win-k">휴면 고객 캠페인의 예약 1건당 단가. 손익분기 3,000원의 4분의 1</span></div><div class="win"><span class="win-v">51만 행</span><span class="win-k">캠페인 한 건에 다루던 분석 시트 최대 행수. 손작업을 스크립트로 옮긴 근거</span></div></div></div></section>
 <section class="slide deck">
   <div class="slide-head"><span class="crumb">마케팅 실무 &nbsp;/&nbsp; <b>발견</b></span>
     <h2>단가를 내리지 않아도 조건 하나로 같은 손실이 났습니다</h2>
@@ -1341,7 +1579,7 @@ details[open] summary{border-bottom:1px solid var(--line-2)}
   </figure>
   <div class="calls" style="margin-top:2.4rem">
     <div class="call"><span class="call-q">부서 네 곳에 걸친 운영</span>
-      <span class="call-a">회차 하나가 마케팅·영업·경영지원·개발에 걸쳐 있습니다. 명단과 목표는 영업·지사와, 쿠폰 발행과 상용 반영은 개발팀과, 정산은 경영지원과 맞췄습니다. <b>담당이 흩어지면 매달 같은 조율이 반복돼</b> 기준을 문서로 고정하고 집계를 자동화했습니다.</span></div>
+      <span class="call-a">회차 하나가 마케팅·영업·운영·개발에 걸쳐 있습니다. 명단과 목표는 영업·지사와, 쿠폰 발행과 상용 반영은 개발팀과, 정산은 운영과 맞췄습니다. <b>담당이 흩어지면 매달 같은 조율이 반복돼</b> 기준을 문서로 고정하고 집계를 자동화했습니다.</span></div>
     <div class="call"><span class="call-q">목표매출 산정 규칙화</span>
       <span class="call-a">첫 참여와 재참여에 서로 다른 기준선을 쓰도록 나누고, 각 경우의 산정 방식을 표로 고정했습니다. <b>담당자마다 다르게 잡던 목표를 같은 규칙으로 맞췄습니다.</b></span></div>
     <div class="call"><span class="call-q">회차 중 미달 리커버리</span>
